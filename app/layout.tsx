@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   robots: 'index, follow',
   openGraph: {
     type: 'website',
-    url: 'https://petscodes.vercel.app/',
+    url: 'https://growagardenpetcodes.com/',
     title: 'Grow a Garden Pet Codes 2025 - Free Roblox Pet Codes & Coupons',
     description: 'Get free Grow a Garden pet codes for 2025! Unlock Kitsune, Queen Bee, T-Rex, Dragonfly pets and more. Daily updated working codes for Roblox Grow a Garden.',
     images: ['/images/logo2.webp'],
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     images: ['/images/logo2.webp'],
   },
   alternates: {
-    canonical: 'https://petscodes.vercel.app/',
+    canonical: 'https://growagardenpetcodes.com/',
   },
   other: {
     'theme-color': '#10b981',
@@ -51,6 +52,20 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4H0VRPPV5Z"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4H0VRPPV5Z');
+          `}
+        </Script>
+        
         {/* Structured Data */}
         <script
           type="application/ld+json"
@@ -59,11 +74,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Grow a Garden Pet Codes",
-              "url": "https://petscodes.vercel.app/",
+              "url": "https://growagardenpetcodes.com/",
               "description": "Free Grow a Garden pet codes for Roblox. Get working codes for Kitsune, Queen Bee, T-Rex, Dragonfly pets and more.",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://petscodes.vercel.app/?search={search_term_string}",
+                "target": "https://growagardenpetcodes.com/?search={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
@@ -73,5 +88,4 @@ export default function RootLayout({
       <body className={inter.className}>{children}</body>
     </html>
   )
-
 } 
