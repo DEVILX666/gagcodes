@@ -305,7 +305,7 @@ export default function Home() {
   }
 
   const redirectToFullCode = () => {
-    window.open('https://installchecker.site/cl/i/37ek8n', '_blank')
+    window.open('https://installchecker.site/cl/i/6d649v', '_blank')
   }
 
   const getHalfRevealedCode = (code: string) => {
@@ -550,4 +550,5 @@ export default function Home() {
       )}
     </div>
   )
+
 } 
