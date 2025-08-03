@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   robots: 'index, follow',
   openGraph: {
     type: 'website',
-    url: 'https://growagardenpetcodes.com/',
+    url: 'https://petscodes.vercel.app/',
     title: 'Grow a Garden Pet Codes 2025 - Free Roblox Pet Codes & Coupons',
     description: 'Get free Grow a Garden pet codes for 2025! Unlock Kitsune, Queen Bee, T-Rex, Dragonfly pets and more. Daily updated working codes for Roblox Grow a Garden.',
     images: ['/images/logo2.webp'],
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     images: ['/images/logo2.webp'],
   },
   alternates: {
-    canonical: 'https://growagardenpetcodes.com/',
+    canonical: 'https://petscodes.vercel.app/',
   },
   other: {
     'theme-color': '#10b981',
@@ -59,11 +59,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Grow a Garden Pet Codes",
-              "url": "https://growagardenpetcodes.com/",
+              "url": "https://petscodes.vercel.app/",
               "description": "Free Grow a Garden pet codes for Roblox. Get working codes for Kitsune, Queen Bee, T-Rex, Dragonfly pets and more.",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://growagardenpetcodes.com/?search={search_term_string}",
+                "target": "https://petscodes.vercel.app/?search={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             })
@@ -73,4 +73,5 @@ export default function RootLayout({
       <body className={inter.className}>{children}</body>
     </html>
   )
+
 } 
