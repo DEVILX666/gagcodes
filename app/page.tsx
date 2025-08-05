@@ -346,8 +346,8 @@ export default function Home() {
               <Image 
                 src="/images/logo2.webp" 
                 alt="Grow a Garden Pet Codes Logo" 
-                width={50} 
-                height={50} 
+                width={40} 
+                height={40} 
                 className="logo-image"
               />
               <h1>Grow a Garden Pet Codes</h1>
