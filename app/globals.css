@@ -1147,18 +1147,52 @@ body {
     width: 100%;
     max-width: 95vw;
     margin: 0 auto;
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 2px 12px rgba(16,185,129,0.15);
+    background: var(--accent-primary);
+    position: relative;
+    min-height: 64px;
+    transition: box-shadow 0.2s;
+  }
+  .professional-button:active,
+  .professional-button:focus {
+    box-shadow: 0 4px 20px rgba(16,185,129,0.25);
+    outline: none;
   }
   .button-left,
   .button-right {
-    padding: 10px 8px;
-    font-size: 0.95rem;
-  }
-  .button-right {
-    border-left: none;
-    border-top: 2px dashed var(--accent-primary);
-    border-radius: 0 0 10px 10px;
-    min-width: unset;
+    background: transparent;
+    border: none;
+    padding: 12px 8px;
+    font-size: 1.1rem;
     width: 100%;
     justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .button-left span {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+  .button-right {
+    border: none;
+    border-radius: 0;
+    min-width: unset;
+    padding-top: 0;
+    padding-bottom: 12px;
+  }
+  .button-right span,
+  .blurry-code {
+    color: #fff !important;
+    opacity: 1 !important;
+    filter: none !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-align: center;
+    width: 100%;
+    display: block;
   }
 } 
