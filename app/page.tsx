@@ -343,7 +343,13 @@ export default function Home() {
         <div className="container">
           <div className="header-content">
             <div className="logo">
-              <i className="fas fa-seedling"></i>
+              <Image 
+                src="/images/logo2.webp" 
+                alt="Grow a Garden Pet Codes Logo" 
+                width={50} 
+                height={50} 
+                className="logo-image"
+              />
               <h1>Grow a Garden Pet Codes</h1>
             </div>
             <div className="header-actions">
