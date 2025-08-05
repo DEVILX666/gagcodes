@@ -184,10 +184,9 @@ const petsData: Pet[] = [
 ]
 
 const loadingSteps = [
-  { message: "Checking coupon code validity...", duration: 1000, progress: 25 },
-  { message: "Verifying server connection...", duration: 1200, progress: 50 },
-  { message: "Processing payment verification...", duration: 1500, progress: 75 },
-  { message: "Finalizing code generation...", duration: 1000, progress: 100 }
+  { message: "Checking amount of coupons left...", duration: 1000, progress: 25 },
+  { message: "Checking coupon code validity...", duration: 1200, progress: 50 },
+  { message: "Coupon is valid!", duration: 2000, progress: 99 }
 ]
 
 // Easing function for smooth animations
@@ -308,11 +307,23 @@ export default function Home() {
       
       // Add a small pause at each step completion
       if (i < loadingSteps.length - 1) {
-        await new Promise(resolve => setTimeout(resolve, 200))
+        await new Promise(resolve => setTimeout(resolve, 300))
       }
     }
-
-    await new Promise(resolve => setTimeout(resolve, 500))
+    
+    // Add a final step from 99% to 100% with a longer pause
+    await new Promise(resolve => setTimeout(resolve, 800))
+    
+    // Animate from 99% to 100%
+    const finalFrames = 20
+    for (let j = 0; j <= finalFrames; j++) {
+      await new Promise(resolve => setTimeout(resolve, 50))
+      const progress = 99 + (1 * easeOutCubic(j / finalFrames))
+      setCurrentProgress(progress)
+    }
+  
+    // Add a longer pause at 100% before showing the ready state
+    await new Promise(resolve => setTimeout(resolve, 1000))
     setModalState('ready')
   }
 
