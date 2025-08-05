@@ -1141,58 +1141,115 @@ body {
     animation: spin 1s linear infinite;
 } 
 
-@media (max-width: 600px) {
+/* Add this to your globals.css file */
+
+/* Improved Mobile Coupon Code Display */
+@media (max-width: 768px) {
   .professional-button {
     flex-direction: column;
-    width: 100%;
-    max-width: 95vw;
-    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
     border: 2px solid var(--accent-primary);
-    box-shadow: 0 2px 12px rgba(16,185,129,0.15);
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
     background: var(--accent-primary);
-    position: relative;
-    min-height: 64px;
-    transition: box-shadow 0.2s;
   }
-  .professional-button:active,
-  .professional-button:focus {
-    box-shadow: 0 4px 20px rgba(16,185,129,0.25);
-    outline: none;
-  }
-  .button-left,
-  .button-right {
+
+  .button-left {
+    padding: 14px 16px;
     background: transparent;
-    border: none;
-    padding: 12px 8px;
-    font-size: 1.1rem;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+    color: white;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
   }
+
   .button-left span {
-    color: #fff;
+    color: white;
     font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
+    font-size: 1rem;
   }
+
   .button-right {
+    padding: 14px 16px;
+    background: white;
     border: none;
     border-radius: 0;
-    min-width: unset;
-    padding-top: 0;
-    padding-bottom: 12px;
+    min-width: auto;
   }
-  .button-right span,
-  .blurry-code {
-    color: #fff !important;
-    opacity: 1 !important;
+
+  .button-right span {
+    color: var(--accent-primary) !important;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
     filter: none !important;
-    font-size: 1.1rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 1px !important;
-    text-align: center;
-    width: 100%;
-    display: block;
+    opacity: 1 !important;
   }
-} 
+
+  .blurry-code {
+    filter: none !important;
+    opacity: 1 !important;
+    color: var(--accent-primary) !important;
+  }
+
+  /* Coupon Ready State */
+  .coupon-ready {
+    padding: 16px;
+  }
+
+  .coupon-code-box {
+    padding: 16px;
+  }
+
+  .coupon-code-preview {
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    filter: none;
+    opacity: 1;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .btn-get-full-code {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .professional-button {
+    border-width: 1px;
+  }
+
+  .button-left,
+  .button-right {
+    padding: 12px;
+  }
+
+  .button-left span,
+  .button-right span {
+    font-size: 0.9rem;
+  }
+
+  .coupon-ready h3 {
+    font-size: 1.2rem;
+  }
+
+  .coupon-code-preview {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .btn-get-full-code {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Improved touch targets for mobile */
+.professional-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.professional-button:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
